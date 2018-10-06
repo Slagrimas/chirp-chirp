@@ -6,20 +6,44 @@ cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
 
 var counter = {
-  "a" : 0,  "b" : 0,  "c" : 0,  "d" : 0,
-  "e" : 0,  "f" : 0,  "g" : 0,  "h" : 0,
-  "i" : 0,  "j" : 0,  "k" : 0,  "l" : 0,
-  "m" : 0,  "n" : 0,  "o" : 0,  "p" : 0,
-  "q" : 0,  "r" : 0,  "s" : 0,  "t" : 0,
-  "u" : 0,  "v" : 0,  "w" : 0,  "x" : 0,
-  "y" : 0,  "z" : 0
+  "a": 0, "b": 0, "c": 0, "d": 0,
+  "e": 0, "f": 0, "g": 0, "h": 0,
+  "i": 0, "j": 0, "k": 0, "l": 0,
+  "m": 0, "n": 0, "o": 0, "p": 0,
+  "q": 0, "r": 0, "s": 0, "t": 0,
+  "u": 0, "v": 0, "w": 0, "x": 0,
+  "y": 0, "z": 0
 }
 
-function countLetters(counter, sample_text){
-  // FIX ME
+function countLetters(counter, sample_text) {
+  // FIX ME 
+  const endIndex = sample_text.length - 1;
+  const currentIndex = 0;
+  const textFix1 = sample_text.replace(/\s+/g, "");
+  const textFix2 = textFix1.toLowerCase();
+  const arraySample = textFix2.split("");
+  let i = 0;
+
+  function recursify() {
+    if (currentIndex === endIndex) {
+      return counter;
+    } else {
+      let key = arraySample[i];
+      if (counter.hasOwnProperty(key)) {
+        counter[key]++
+        console.log('letters');
+      }
+
+      console.log('key');
+
+      i++;
+      recursify();
+    }
+  }
+  return recursify();
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
   countLetters(counter, sample_text);
   $("#result").html(JSON.stringify(counter));
 });
